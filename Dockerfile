@@ -55,11 +55,11 @@ HEALTHCHECK --interval=30s --timeout=3s \
   CMD wget -qO- http://localhost:8080/actuator/health || exit 1
 
 # 启动命令（限制内存+优化GC）
+  # 加速随机数生成
+  # 低延迟垃圾回收器
 ENTRYPOINT ["java",
   "-Xmx256m",
-  # 低延迟垃圾回收器
   "-XX:+UseZGC",
-  # 加速随机数生成
   "-Djava.security.egd=file:/dev/./urandom",
   "-Dspring.profiles.active=prod",
   "-jar", "app.jar"]
