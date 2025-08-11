@@ -1,0 +1,15 @@
+# 忽略开发环境文件
+.idea
+*.iml
+.vscode
+
+# 忽略构建输出
+target
+bin
+
+# 忽略版本控制
+.git
+.gitignore
+
+# 忽略日志文件
+*.log
