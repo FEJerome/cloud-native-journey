@@ -13,7 +13,9 @@ COPY pom.xml .
 RUN sed -i 's|https://repo.maven.apache.org|https://maven.aliyun.com/repository/public|g' /usr/share/maven/conf/settings.xml
 
 # 下载依赖（离线模式加速后续构建）
-RUN mvn dependency:go-offline -B
+# RUN mvn dependency:go-offline -B
+# 暂时使用简单的依赖下载，避免超时
+RUN mvn dependency:resolve -B
 
 # 复制源代码
 COPY src ./src
